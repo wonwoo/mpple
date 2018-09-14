@@ -14,6 +14,7 @@
         <module>mpple-dozer</module>
         <module>mpple-beanutils</module>
         <module>mpple-spring</module>
+        <module>mpple-spring-boot-starter</module>
     </modules>
 
     <properties>

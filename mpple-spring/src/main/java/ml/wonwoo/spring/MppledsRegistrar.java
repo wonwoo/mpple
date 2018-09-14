@@ -30,18 +30,8 @@ public class MppledsRegistrar implements ImportBeanDefinitionRegistrar, Environm
 
     @Override
     public void registerBeanDefinitions(AnnotationMetadata annotationMetadata, BeanDefinitionRegistry beanDefinitionRegistry) {
-
         Map<String, Object> annotationAttributes = annotationMetadata.getAnnotationAttributes(EnableMppled.class.getName());
-        Class<?>[] basePackageClasses = (Class<?>[]) annotationAttributes.get("basePackageClasses");
-        Set<String> packageNames = new HashSet<>();
-        if (basePackageClasses == null || basePackageClasses.length == 0) {
-            packageNames.add(ClassUtils.getPackageName(annotationMetadata.getClassName()));
-        } else {
-            for (Class<?> basePackageClass : basePackageClasses) {
-                packageNames.add(basePackageClass.getPackage().getName());
-            }
-        }
-
+        Set<String> packageNames = getBasePackage(annotationMetadata, annotationAttributes);
         ClassPathScanningCandidateComponentProvider scanner = scan();
         scanner.setResourceLoader(this.resourceLoader);
         AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(Mppled.class);
@@ -60,7 +50,20 @@ public class MppledsRegistrar implements ImportBeanDefinitionRegistrar, Environm
         }
     }
 
-    private void registerBeanDefinitionMppled(AnnotationMetadata metadata, BeanDefinitionRegistry beanDefinitionRegistry) {
+    protected Set<String> getBasePackage(AnnotationMetadata annotationMetadata, Map<String, Object> mppledAnnotationAttributes) {
+        Class<?>[] basePackageClasses = (Class<?>[]) mppledAnnotationAttributes.get("basePackageClasses");
+        Set<String> packageNames = new HashSet<>();
+        if (basePackageClasses == null || basePackageClasses.length == 0) {
+            packageNames.add(ClassUtils.getPackageName(annotationMetadata.getClassName()));
+        } else {
+            for (Class<?> basePackageClass : basePackageClasses) {
+                packageNames.add(basePackageClass.getPackage().getName());
+            }
+        }
+        return packageNames;
+    }
+
+    protected void registerBeanDefinitionMppled(AnnotationMetadata metadata, BeanDefinitionRegistry beanDefinitionRegistry) {
         Map<String, Object> attributes = metadata.getAnnotationAttributes(Mppled.class.getCanonicalName());
         String className = metadata.getClassName();
         BeanDefinitionBuilder definition = BeanDefinitionBuilder.genericBeanDefinition(MppleFactoryBean.class);
