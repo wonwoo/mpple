@@ -21,6 +21,7 @@
             <groupId>ml.wonwoo</groupId>
             <artifactId>mpple-modelmapper</artifactId>
             <version>1.0-SNAPSHOT</version>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
