@@ -5,7 +5,7 @@
     <parent>
         <artifactId>mpple</artifactId>
         <groupId>ml.wonwoo</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,22 +15,18 @@
         <dependency>
             <groupId>ml.wonwoo</groupId>
             <artifactId>mpple-spring</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>ml.wonwoo</groupId>
             <artifactId>mpple-modelmapper</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
-            <version>2.0.4.RELEASE</version>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.0.4.RELEASE</version>
             <scope>test</scope>
         </dependency>
     </dependencies>

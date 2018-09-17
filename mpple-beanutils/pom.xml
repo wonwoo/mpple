@@ -5,7 +5,7 @@
     <parent>
         <artifactId>mpple</artifactId>
         <groupId>ml.wonwoo</groupId>
-        <version>1.0-SNAPSHOT</version>
+        <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -15,12 +15,11 @@
         <dependency>
             <groupId>ml.wonwoo</groupId>
             <artifactId>core</artifactId>
-            <version>1.0-SNAPSHOT</version>
         </dependency>
         <dependency>
             <groupId>commons-beanutils</groupId>
             <artifactId>commons-beanutils</artifactId>
-            <version>1.9.3</version>
+            <version>${commons-beanutils.version}</version>
         </dependency>
     </dependencies>
 
