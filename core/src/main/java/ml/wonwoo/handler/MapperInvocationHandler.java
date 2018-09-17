@@ -4,7 +4,6 @@ import java.lang.invoke.MethodHandles.Lookup;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
-import java.lang.reflect.Modifier;
 import java.lang.reflect.Proxy;
 import ml.wonwoo.mapped.Mapped;
 import ml.wonwoo.util.Assert;
@@ -44,7 +43,7 @@ public class MapperInvocationHandler implements InvocationHandler {
             throw new IllegalArgumentException("args must only one!");
         }
         if (isNotSupportType(method)) {
-            return null;
+            throw new IllegalArgumentException("not support return type : " + method.getReturnType());
         }
         return mapped.map(args[0], method.getReturnType());
     }
