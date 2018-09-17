@@ -37,11 +37,11 @@ public class MapperInvocationHandler implements InvocationHandler {
             return toString();
         }
 
-        if (args == null || args.length == 0 || args.length > 1) {
-            throw new IllegalArgumentException("args must only one!");
-        }
         if (isDefault(method)) {
             return defaultMethod(proxy, method, args);
+        }
+        if (args == null || args.length == 0 || args.length > 1) {
+            throw new IllegalArgumentException("args must only one!");
         }
         if (isNotSupportType(method)) {
             return null;
@@ -66,9 +66,7 @@ public class MapperInvocationHandler implements InvocationHandler {
     }
 
     private boolean isDefault(Method method) {
-//        method.isDefault()
-        return ((method.getModifiers() & (Modifier.ABSTRACT | Modifier.PUBLIC | Modifier.STATIC)) == Modifier.PUBLIC)
-            && method.getDeclaringClass().isInterface();
+        return method.isDefault();
     }
 
     @Override
