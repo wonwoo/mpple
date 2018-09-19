@@ -31,7 +31,7 @@ public class MppleTests {
         assertThat(fooDto.getLastName()).isEqualTo("lee");
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void voidReturnTest() {
         FooMapper fooMapper = Mpple.builder()
             .target(FooMapper.class);
@@ -41,7 +41,7 @@ public class MppleTests {
         fooMapper.fooBar(foo);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void objectReturnTest() {
         FooMapper fooMapper = Mpple.builder()
             .target(FooMapper.class);

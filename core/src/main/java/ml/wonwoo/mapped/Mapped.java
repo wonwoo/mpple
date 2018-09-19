@@ -1,8 +1,11 @@
 package ml.wonwoo.mapped;
 
-import java.lang.reflect.Constructor;
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
+import ml.wonwoo.util.Assert;
+import ml.wonwoo.util.ClassUtils;
+import net.sf.cglib.beans.BeanCopier;
+import net.sf.cglib.core.Converter;
+import org.objenesis.Objenesis;
+import org.objenesis.ObjenesisStd;
 
 public interface Mapped {
 
@@ -12,32 +15,41 @@ public interface Mapped {
         return new DefaultMapped();
     }
 
-    // not use
     class DefaultMapped implements Mapped {
+
+        private final static Objenesis objenesis = new ObjenesisStd();
+        private Converter converter = new DefaultConverter();
 
         @Override
         public <D> D map(Object source, Class<D> type) {
-            Field[] declaredFields = source.getClass().getDeclaredFields();
-            try {
-                Constructor<D> declaredConstructor = type.getDeclaredConstructor();
-                declaredConstructor.setAccessible(true);
-                D instance = declaredConstructor.newInstance();
-                for (Field declaredField : declaredFields) {
-                    declaredField.setAccessible(true);
-                    Object obj = declaredField.get(source);
-                    Field typeFidld = type.getDeclaredField(declaredField.getName());
-                    if (typeFidld != null) {
-                        if (!Modifier.isStatic(typeFidld.getModifiers())) {
-                            typeFidld.setAccessible(true);
-                            typeFidld.set(instance, obj);
-                        }
-                    }
+            return newInstance(source, type);
+        }
+
+        @SuppressWarnings("unchecked")
+        <D> D newInstance(Object source, Class<D> type) {
+            BeanCopier copier = BeanCopier.create(source.getClass(), type, this.converter != null);
+            D destination = objenesis.newInstance(type);
+            if (ClassUtils.isWrapperType(type)) {
+                return (D) source;
+            }
+            copier.copy(source, destination, this.converter);
+            return destination;
+        }
+
+        private class DefaultConverter implements Converter {
+
+            @Override
+            public Object convert(Object value, Class target, Object context) {
+                if (ClassUtils.isWrapperType(target)) {
+                    return value;
                 }
-                return instance;
-            } catch (Exception e) {
-                throw new IllegalArgumentException(e);
+                return newInstance(value, target);
             }
         }
-    }
 
+        public void setConverter(Converter converter) {
+            Assert.notNull(converter, "converter must not null");
+            this.converter = converter;
+        }
+    }
 }
