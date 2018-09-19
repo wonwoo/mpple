@@ -63,7 +63,7 @@ public static void main(String[] args) {
     Foo foo = new Foo();
     foo.setFirstName("wonwoo");
     foo.setLastName("lee");
-    assertThat(fooMapper.bar(foo)).isEqualTo("wonwoo");
+    assertThat(fooMapper.bar(foo).getFirstName()).isEqualTo("wonwoo");
 }
 
 ```
