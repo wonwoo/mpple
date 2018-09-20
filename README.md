@@ -63,7 +63,7 @@ public static void main(String[] args) {
     Foo foo = new Foo();
     foo.setFirstName("wonwoo");
     foo.setLastName("lee");
-    assertThat(fooMapper.bar(foo).getFirstName()).isEqualTo("wonwoo");
+    assertThat(fooMapper.foo(foo).getFirstName()).isEqualTo("wonwoo");
 }
 
 ```
@@ -79,7 +79,7 @@ public class MppleSpringConfig {
 
 @Mppled
 public interface FooMapper {
-    FooDto bar(Foo foo);
+    FooDto foo(Foo foo);
 }
 
 @Autowired
