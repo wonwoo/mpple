@@ -17,11 +17,10 @@
             <artifactId>cglib</artifactId>
             <version>${cglib.version}</version>
         </dependency>
-
         <dependency>
-            <groupId>org.objenesis</groupId>
-            <artifactId>objenesis</artifactId>
-            <version>${objenesis.version}</version>
+            <groupId>net.jodah</groupId>
+            <artifactId>typetools</artifactId>
+            <version>${typetools.version}</version>
         </dependency>
     </dependencies>
 </project>

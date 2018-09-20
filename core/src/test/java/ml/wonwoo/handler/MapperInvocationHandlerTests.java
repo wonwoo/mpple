@@ -3,7 +3,7 @@ package ml.wonwoo.handler;
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.lang.reflect.Proxy;
-import ml.wonwoo.mapped.Mapped.DefaultMapped;
+import ml.wonwoo.mapped.DefaultMapped;
 import ml.wonwoo.model.FooMapper;
 import org.junit.Test;
 

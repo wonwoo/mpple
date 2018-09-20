@@ -5,8 +5,8 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
+import ml.wonwoo.mapped.DefaultMapped;
 import ml.wonwoo.mapped.Mapped;
-import ml.wonwoo.mapped.Mapped.DefaultMapped;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
