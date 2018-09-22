@@ -1,5 +1,7 @@
 # mpple
 
+[![Build Status](https://travis-ci.org/wonwoo/mpple.svg?branch=master)](https://travis-ci.org/wonwoo/mpple)
+
 ## init 
 
 ### example
