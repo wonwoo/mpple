@@ -199,7 +199,7 @@
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>${coveralls.version}</version>
                 <configuration>
-                    <repoToken>{token}</repoToken>
+                    <repoToken>7riUVg5F5uWep498jyfTt8BLVRaBhFbN9</repoToken>
                     <jacocoReports>
                         <jacocoReport>core/target/site/jacoco-it/jacoco.xml</jacocoReport>
                         <jacocoReport>core/target/site/jacoco-ut/jacoco.xml</jacocoReport>
