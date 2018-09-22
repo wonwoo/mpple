@@ -6,14 +6,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import ml.wonwoo.mapped.MappingInstance;
+import ml.wonwoo.mapped.mapping.MappingInstanceImpl;
 import ml.wonwoo.model.Foo;
 import org.junit.Test;
 
 public class MapConverterTests {
 
     private final MapConverter mapConverter
-        = new MapConverter(new MappingInstance());
+        = new MapConverter(new MappingInstanceImpl());
 
     @Test
     public void supports() {

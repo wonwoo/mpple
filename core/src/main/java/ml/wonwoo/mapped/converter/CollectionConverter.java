@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import ml.wonwoo.mapped.MappingInstance;
+import ml.wonwoo.mapped.mapping.MappingInstance;
 import ml.wonwoo.util.ClassUtils;
 import net.jodah.typetools.TypeResolver;
 
@@ -28,18 +28,18 @@ public class CollectionConverter implements MappedConverter {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Object convert(Class<?> clazz, Object value, Class<?> target, Object context) {
+    public Object convert(Class<?> rootClass, Object value, Class<?> target, Object context) {
         try {
-            Method method = clazz.getDeclaredMethod((String) context, target);
+            Method method = rootClass.getDeclaredMethod((String) context, target);
             Type genericType = ClassUtils.getGenericType(method);
-            Class<?> type = TypeResolver.resolveRawArgument(genericType, clazz);
+            Class<?> type = TypeResolver.resolveRawArgument(genericType, rootClass);
             Collection<Object> collection = collectionCreate((Class<Object>) target);
             List<Object> list = (List) value;
             for (Object obj : list) {
-                if (ClassUtils.isWrapperType(type)) {
+                if (!ClassUtils.isObject(type)) {
                     collection.add(obj);
                 } else {
-                    collection.add(mappingInstance.newInstance(obj, type));
+                    collection.add(mappingInstance.map(obj, type));
                 }
             }
             return collection;
@@ -59,7 +59,7 @@ public class CollectionConverter implements MappedConverter {
                 return new ArrayList<>();
             }
         } else {
-            return (Collection<T>) ClassUtils.newInstance(clazz);
+            return (Collection<T>) ClassUtils.instantiateClass(clazz);
         }
     }
 

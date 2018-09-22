@@ -5,7 +5,7 @@ import java.lang.reflect.Type;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
-import ml.wonwoo.mapped.MappingInstance;
+import ml.wonwoo.mapped.mapping.MappingInstance;
 import ml.wonwoo.util.ClassUtils;
 import net.jodah.typetools.TypeResolver;
 
@@ -24,28 +24,28 @@ public class MapConverter implements MappedConverter {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Object convert(Class<?> clazz, Object value, Class<?> target, Object context) {
+    public Object convert(Class<?> rootClass, Object value, Class<?> target, Object context) {
         try {
-            Method method = clazz.getDeclaredMethod((String) context, target);
+            Method method = rootClass.getDeclaredMethod((String) context, target);
             Type genericType = ClassUtils.getGenericType(method);
-            Class<?>[] type = TypeResolver.resolveRawArguments(genericType, clazz);
+            Class<?>[] type = TypeResolver.resolveRawArguments(genericType, rootClass);
             Class<?> keyType = type[0];
             Class<?> valueType = type[1];
 
-            Map<Object, Object> destinaion = mapCreate(target);
+            Map<Object, Object> destination = mapCreate(target);
             Map<Object, Object> map = (Map<Object, Object>) value;
             for (Entry<?, ?> entry : map.entrySet()) {
                 Object k = entry.getKey();
                 Object v = entry.getValue();
-                if (!ClassUtils.isWrapperType(keyType)) {
-                    k = mappingInstance.newInstance(k, keyType);
+                if (!ClassUtils.isObject(keyType)) {
+                    k = mappingInstance.map(k, keyType);
                 }
-                if (!ClassUtils.isWrapperType(valueType)) {
-                    v = mappingInstance.newInstance(v, valueType);
+                if (!ClassUtils.isObject(valueType)) {
+                    v = mappingInstance.map(v, valueType);
                 }
-                destinaion.put(k, v);
+                destination.put(k, v);
             }
-            return destinaion;
+            return destination;
         } catch (Exception e) {
             return null;
         }
@@ -56,7 +56,7 @@ public class MapConverter implements MappedConverter {
         if (clazz.isInterface()) {
             return new HashMap<>();
         }
-        return (Map<Object, Object>) ClassUtils.newInstance(clazz);
+        return (Map<Object, Object>) ClassUtils.instantiateClass(clazz);
     }
 
 }

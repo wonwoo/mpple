@@ -3,13 +3,13 @@ package ml.wonwoo.mapped.converter;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import ml.wonwoo.mapped.MappingInstance;
+import ml.wonwoo.mapped.mapping.MappingInstanceImpl;
 import ml.wonwoo.model.Foo;
 import org.junit.Test;
 
 public class ArrayConverterTests {
 
-    private final ArrayConverter converter = new ArrayConverter(new MappingInstance());
+    private final ArrayConverter converter = new ArrayConverter(new MappingInstanceImpl());
 
 
     @Test

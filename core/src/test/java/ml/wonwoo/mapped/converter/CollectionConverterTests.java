@@ -9,14 +9,14 @@ import java.util.List;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import ml.wonwoo.mapped.MappingInstance;
+import ml.wonwoo.mapped.mapping.MappingInstanceImpl;
 import ml.wonwoo.model.Foo;
 import org.junit.Test;
 
 public class CollectionConverterTests {
 
     private final CollectionConverter collectionConverter
-        = new CollectionConverter(new MappingInstance());
+        = new CollectionConverter(new MappingInstanceImpl());
 
     @Test
     public void supports() {

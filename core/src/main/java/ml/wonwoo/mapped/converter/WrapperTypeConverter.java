@@ -6,11 +6,11 @@ public class WrapperTypeConverter implements MappedConverter {
 
     @Override
     public boolean supports(Class<?> target) {
-        return ClassUtils.isWrapperType(target);
+        return !ClassUtils.isObject(target);
     }
 
     @Override
-    public Object convert(Class<?> clazz, Object value, Class<?> target, Object context) {
+    public Object convert(Class<?> rootClass, Object value, Class<?> target, Object context) {
         return value;
     }
 }

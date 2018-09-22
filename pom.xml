@@ -16,7 +16,7 @@
         <module>mpple-beanutils</module>
         <module>mpple-spring</module>
         <module>mpple-spring-boot-starter</module>
-        <module>benchmark</module>
+        <!--<module>benchmark</module>-->
     </modules>
 
     <properties>
@@ -26,6 +26,7 @@
         <cglib.version>3.2.5</cglib.version>
         <typetools.version>0.5.0</typetools.version>
         <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <moneta.version>1.3</moneta.version>
         <modelmapper.version>2.2.0</modelmapper.version>
         <dozer.version>5.4.0</dozer.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
@@ -47,7 +48,6 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
-
 
     <dependencyManagement>
         <dependencies>

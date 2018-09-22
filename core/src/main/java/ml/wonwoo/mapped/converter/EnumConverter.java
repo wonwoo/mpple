@@ -9,7 +9,7 @@ public class EnumConverter implements MappedConverter {
 
     @Override
     @SuppressWarnings("unchecked")
-    public Object convert(Class<?> clazz, Object value, Class<?> target, Object context) {
+    public Object convert(Class<?> rootClass, Object value, Class<?> target, Object context) {
         Enum<?> enumValue = (Enum<?>) value;
         return Enum.valueOf((Class) target, enumValue.name());
     }

@@ -1,30 +1,31 @@
-package ml.wonwoo.mapped;
+package ml.wonwoo.mapped.mapping;
 
 import ml.wonwoo.mapped.converter.ArrayConverter;
 import ml.wonwoo.mapped.converter.CollectionConverter;
 import ml.wonwoo.mapped.converter.EnumConverter;
-import ml.wonwoo.mapped.converter.MiscConverter;
 import ml.wonwoo.mapped.converter.MapConverter;
 import ml.wonwoo.mapped.converter.MappedConverter;
 import ml.wonwoo.mapped.converter.MappedConverterComposite;
 import ml.wonwoo.mapped.converter.WrapperTypeConverter;
+import ml.wonwoo.util.Assert;
 import ml.wonwoo.util.ClassUtils;
 import net.sf.cglib.beans.BeanCopier;
 import net.sf.cglib.core.Converter;
 
-public class MappingInstance {
+public class MappingInstanceImpl implements MappingInstance {
 
     private final MappedConverterComposite converter = new MappedConverterComposite();
 
-    public MappingInstance() {
+    public MappingInstanceImpl() {
         this.defaultConverter();
     }
 
     @SuppressWarnings("unchecked")
-    public <D> D newInstance(Object source, Class<D> type) {
+    @Override
+    public <D> D map(Object source, Class<D> type) {
         BeanCopier copier = BeanCopier.create(source.getClass(), type, true);
-        D destination = ClassUtils.newInstance(type);
-        if (ClassUtils.isWrapperType(type)) {
+        D destination = ClassUtils.instantiateClass(type);
+        if (!ClassUtils.isObject(type)) {
             return (D) source;
         }
         copier.copy(source, destination, new DefaultConverter(type, converter));
@@ -49,22 +50,22 @@ public class MappingInstance {
             if (converter.supports(target)) {
                 return converter.convert(clazz, value, target, context);
             }
-            return newInstance(value, target);
+            return MappingInstanceImpl.this.map(value, target);
         }
     }
 
     private void defaultConverter() {
         this.converter.addConverters(
+            new WrapperTypeConverter(),
             new CollectionConverter(this),
             new MapConverter(this),
-            new WrapperTypeConverter(),
             new ArrayConverter(this),
-            new MiscConverter(),
-            new EnumConverter());
+            new EnumConverter()
+        );
     }
 
     public void addConverter(MappedConverter mappedConverter) {
+        Assert.notNull(mappedConverter, "mappedConverter must not null");
         this.converter.addConverter(mappedConverter);
     }
-
 }
