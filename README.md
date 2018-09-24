@@ -1,6 +1,7 @@
 # mpple
 
 [![Build Status](https://travis-ci.org/wonwoo/mpple.svg?branch=master)](https://travis-ci.org/wonwoo/mpple)
+[![Build Status](https://semaphoreci.com/api/v1/wonwoo/mpple/branches/master/badge.svg)](https://semaphoreci.com/wonwoo/mpple)
 [![Coverage Status](https://coveralls.io/repos/github/wonwoo/mpple/badge.svg?branch=master)](https://coveralls.io/github/wonwoo/mpple?branch=master)
 
 ## default sample
