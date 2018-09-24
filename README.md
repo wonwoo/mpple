@@ -1,10 +1,9 @@
 # mpple
 
 [![Build Status](https://travis-ci.org/wonwoo/mpple.svg?branch=master)](https://travis-ci.org/wonwoo/mpple)
+[![Coverage Status](https://coveralls.io/repos/github/wonwoo/mpple/badge.svg?branch=master)](https://coveralls.io/github/wonwoo/mpple?branch=master)
 
-## init 
-
-### example
+## default sample
 
 ```java
 
@@ -70,7 +69,6 @@ public static void main(String[] args) {
 
 ```
 
-
 ### for spring 
 
 ```java
@@ -101,6 +99,8 @@ public void mappingTest() {
 
 ### for spring boot
 
+> spring boot is default modelmapper 
+
 ```java
 @Mppled
 public interface FooMapper {
@@ -122,3 +122,6 @@ public void mappingTest() {
 }
 
 ```
+### config
+
+TODO 
