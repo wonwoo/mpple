@@ -35,24 +35,12 @@ public class MppleFactoryBean implements FactoryBean<Object>, BeanFactoryAware {
         this.type = type;
     }
 
-    public Class<?> getType() {
-        return type;
-    }
-
     public void setMapped(Mapped mapped) {
         this.mapped = mapped;
     }
 
-    public Mapped getMapped() {
-        return mapped;
-    }
-
     public void setBeanName(String beanName) {
         this.beanName = beanName;
-    }
-
-    public String getBeanName() {
-        return beanName;
     }
 
     private <T> T getBean(String beanName, Class<T> expectedType) {
