@@ -205,8 +205,8 @@
                     <jacocoReports>
                         <jacocoReport>core/target/site/jacoco-it/jacoco.xml</jacocoReport>
                         <jacocoReport>core/target/site/jacoco-ut/jacoco.xml</jacocoReport>
-                        <jacocoReport>mpple-beantuils/target/site/jacoco-it/jacoco.xml</jacocoReport>
-                        <jacocoReport>mpple-beantuils/target/site/jacoco-ut/jacoco.xml</jacocoReport>
+                        <jacocoReport>mpple-beanutils/target/site/jacoco-it/jacoco.xml</jacocoReport>
+                        <jacocoReport>mpple-beanutils/target/site/jacoco-ut/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-dozer/target/site/jacoco-it/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-dozer/target/site/jacoco-ut/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-modelmapper/target/site/jacoco-it/jacoco.xml</jacocoReport>
