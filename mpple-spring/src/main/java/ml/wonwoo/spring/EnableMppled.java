@@ -5,19 +5,13 @@ import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 import java.lang.annotation.Target;
-import ml.wonwoo.spring.EnableMppled.Marker;
 import org.springframework.context.annotation.Import;
 
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 @Documented
-@Import({MppledsRegistrar.class, Marker.class})
+@Import(MppledsRegistrar.class)
 public @interface EnableMppled {
 
     Class<?>[] basePackageClasses() default {};
-
-
-    class Marker {
-
-    }
 }
