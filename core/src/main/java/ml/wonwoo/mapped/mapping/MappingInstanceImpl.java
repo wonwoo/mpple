@@ -28,10 +28,19 @@ public class MappingInstanceImpl implements MappingInstance {
         if (!ClassUtils.isObject(type)) {
             return (D) source;
         }
-        copier.copy(source, destination, new DefaultConverter(type, converter));
+        copier.copy(source, destination, (value, target, context) -> {
+            if (value == null) {
+                return null;
+            }
+            if (converter.supports(target)) {
+                return converter.convert(type, value, target, context);
+            }
+            return this.map(value, target);
+        });
         return destination;
     }
 
+    @Deprecated
     private class DefaultConverter implements Converter {
 
         private final Class<?> clazz;
