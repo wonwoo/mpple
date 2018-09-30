@@ -17,6 +17,7 @@
         <module>mpple-spring</module>
         <module>mpple-spring-boot-starter</module>
         <module>benchmark</module>
+        <module>mpple-sample</module>
     </modules>
 
     <properties>
