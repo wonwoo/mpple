@@ -69,6 +69,7 @@ public abstract class ClassUtils {
         defaultJavaType = Collections.unmodifiableMap(javaType);
 
         allType.addAll(wrapperType.keySet());
+        allType.addAll(wrapperType.values());
         allType.addAll(defaultJavaType.keySet());
     }
 
