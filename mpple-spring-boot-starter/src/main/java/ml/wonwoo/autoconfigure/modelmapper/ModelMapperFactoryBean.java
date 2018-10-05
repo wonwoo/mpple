@@ -21,10 +21,9 @@ public class ModelMapperFactoryBean implements FactoryBean<ModelMapper> {
     }
 
     private void configure(ModelMapper modelMapper) {
-        if (mapperCustomizers == null) {
-            return;
+        if (mapperCustomizers != null) {
+            mapperCustomizers.forEach(modelCustomizer -> modelCustomizer.customize(modelMapper));
         }
-        mapperCustomizers.forEach(modelCustomizer -> modelCustomizer.customize(modelMapper));
     }
 
     public void setMapperCustomizers(List<ModelMapperCustomizer> mapperCustomizers) {
