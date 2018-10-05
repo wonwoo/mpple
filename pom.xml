@@ -39,7 +39,6 @@
         <coveralls.version>4.3.0</coveralls.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
         <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
-        <assertj-core.version>2.6.0</assertj-core.version>
         <github.global.server>github</github.global.server>
     </properties>
 
@@ -53,7 +52,6 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
