@@ -18,6 +18,7 @@
         <module>mpple-spring-boot-starter</module>
         <module>benchmark</module>
         <module>mpple-sample</module>
+        <module>doc</module>
     </modules>
 
     <properties>
@@ -34,11 +35,12 @@
         <dozer.version>5.4.0</dozer.version>
         <commons-beanutils.version>1.9.3</commons-beanutils.version>
         <junit.version>4.12</junit.version>
-        <assertj.version>3.11.1</assertj.version>
         <maven.jacoco.version>0.7.6.201602180812</maven.jacoco.version>
         <coveralls.version>4.3.0</coveralls.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
         <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
+        <assertj-core.version>2.6.0</assertj-core.version>
+        <github.global.server>github</github.global.server>
     </properties>
 
     <dependencies>
@@ -51,10 +53,16 @@
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
-            <version>${assertj.version}</version>
+            <version>${assertj-core.version}</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
+
+    <scm>
+        <connection>scm:git:git://github.com/wonwoo/mpple</connection>
+        <developerConnection>scm:git:ssh://git@github.com:wonwoo/mpple</developerConnection>
+        <url>https://github.com/wonwoo/mpple</url>
+    </scm>
 
     <dependencyManagement>
         <dependencies>
