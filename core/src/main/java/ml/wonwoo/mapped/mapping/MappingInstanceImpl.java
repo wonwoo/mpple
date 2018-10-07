@@ -10,7 +10,6 @@ import ml.wonwoo.mapped.converter.WrapperTypeConverter;
 import ml.wonwoo.util.Assert;
 import ml.wonwoo.util.ClassUtils;
 import net.sf.cglib.beans.BeanCopier;
-import net.sf.cglib.core.Converter;
 
 public class MappingInstanceImpl implements MappingInstance {
 
