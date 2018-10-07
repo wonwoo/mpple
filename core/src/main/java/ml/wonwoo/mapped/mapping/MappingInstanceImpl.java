@@ -40,29 +40,6 @@ public class MappingInstanceImpl implements MappingInstance {
         return destination;
     }
 
-    @Deprecated
-    private class DefaultConverter implements Converter {
-
-        private final Class<?> clazz;
-        private final MappedConverter converter;
-
-        private DefaultConverter(Class<?> clazz, MappedConverter converter) {
-            this.clazz = clazz;
-            this.converter = converter;
-        }
-
-        @Override
-        public Object convert(Object value, Class target, Object context) {
-            if (value == null) {
-                return null;
-            }
-            if (converter.supports(target)) {
-                return converter.convert(clazz, value, target, context);
-            }
-            return MappingInstanceImpl.this.map(value, target);
-        }
-    }
-
     private void defaultConverter() {
         this.converter.addConverters(
             new WrapperTypeConverter(),
