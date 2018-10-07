@@ -1,5 +1,6 @@
 package ml.wonwoo.mapped.converter;
 
+@FunctionalInterface
 public interface MappedConverter {
 
     default boolean supports(Class<?> target) {
