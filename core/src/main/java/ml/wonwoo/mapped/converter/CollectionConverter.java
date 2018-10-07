@@ -36,10 +36,10 @@ public class CollectionConverter implements MappedConverter {
             Collection<Object> collection = collectionCreate((Class<Object>) target);
             List<Object> list = (List) value;
             for (Object obj : list) {
-                if (!ClassUtils.isObject(type)) {
-                    collection.add(obj);
-                } else {
+                if (ClassUtils.isObject(type)) {
                     collection.add(mappingInstance.map(obj, type));
+                } else {
+                    collection.add(obj);
                 }
             }
             return collection;

@@ -22,12 +22,12 @@ public class ArrayConverter implements MappedConverter {
         if (ClassUtils.isObject(target.getComponentType())) {
             Object[] arrays = (Object[]) value;
             Object[] destination = new Object[arrays.length];
-            Object obj = Array.newInstance(target.getComponentType(), arrays.length);
+            Object array = Array.newInstance(target.getComponentType(), arrays.length);
             for (int i = 0; i < arrays.length; i++) {
                 destination[i] = mappingInstance.map(arrays[i], target.getComponentType());
             }
-            System.arraycopy(destination, 0, obj, 0, arrays.length);
-            return obj;
+            System.arraycopy(destination, 0, array, 0, arrays.length);
+            return array;
         }
         return value;
     }

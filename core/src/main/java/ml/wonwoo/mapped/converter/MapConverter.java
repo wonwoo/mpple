@@ -35,15 +35,15 @@ public class MapConverter implements MappedConverter {
             Map<Object, Object> destination = mapCreate(target);
             Map<Object, Object> map = (Map<Object, Object>) value;
             for (Entry<?, ?> entry : map.entrySet()) {
-                Object k = entry.getKey();
-                Object v = entry.getValue();
+                Object entryKey = entry.getKey();
+                Object entryValue = entry.getValue();
                 if (!ClassUtils.isObject(keyType)) {
-                    k = mappingInstance.map(k, keyType);
+                    entryKey = mappingInstance.map(entryKey, keyType);
                 }
                 if (!ClassUtils.isObject(valueType)) {
-                    v = mappingInstance.map(v, valueType);
+                    entryValue = mappingInstance.map(entryValue, valueType);
                 }
-                destination.put(k, v);
+                destination.put(entryKey, entryValue);
             }
             return destination;
         } catch (Exception e) {
