@@ -49,7 +49,7 @@ public abstract class ClassUtils {
         javaType.put(Number.class, Number.class);
         javaType.put(CharSequence.class, CharSequence.class);
 
-        if (isPresent("java.util.Optional")) {
+        if (isJava8()) {
             javaType.put(ChronoLocalDate.class, ChronoLocalDate.class);
             javaType.put(ChronoLocalDateTime.class, ChronoLocalDateTime.class);
             javaType.put(Temporal.class, Temporal.class);
@@ -60,7 +60,7 @@ public abstract class ClassUtils {
             javaType.put(ReadableDateTime.class, ReadableDateTime.class);
         }
 
-        if(isJsr354()) {
+        if (isJsr354()) {
             javaType.put(CurrencyUnit.class, CurrencyUnit.class);
             javaType.put(MonetaryAmount.class, MonetaryAmount.class);
         }
@@ -84,6 +84,10 @@ public abstract class ClassUtils {
             }
         }
         return true;
+    }
+
+    public static boolean isJava8() {
+        return isPresent("java.util.Optional");
     }
 
     public static boolean isJsr354() {
