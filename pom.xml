@@ -215,7 +215,7 @@
                 <configuration>
                     <repoToken>7riUVg5F5uWep498jyfTt8BLVRaBhFbN9</repoToken>
                     <jacocoReports>
-                        <jacocoReport>mpple-corecore/target/site/jacoco-it/jacoco.xml</jacocoReport>
+                        <jacocoReport>mpple-core/target/site/jacoco-it/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-core/target/site/jacoco-ut/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-beanutils/target/site/jacoco-it/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-beanutils/target/site/jacoco-ut/jacoco.xml</jacocoReport>
