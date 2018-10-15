@@ -1,5 +1,6 @@
 package ml.wonwoo.mapped.mapping;
 
+import ml.wonwoo.core.BeanCopyAnnotation;
 import ml.wonwoo.mapped.converter.ArrayConverter;
 import ml.wonwoo.mapped.converter.CollectionConverter;
 import ml.wonwoo.mapped.converter.EnumConverter;
@@ -22,7 +23,7 @@ public class MappingInstanceImpl implements MappingInstance {
     @SuppressWarnings("unchecked")
     @Override
     public <D> D map(Object source, Class<D> type) {
-        BeanCopier copier = BeanCopier.create(source.getClass(), type, true);
+        BeanCopier copier = BeanCopyAnnotation.create(source.getClass(), type);
         D destination = ClassUtils.instantiateClass(type);
         if (!ClassUtils.isObject(type)) {
             return (D) source;

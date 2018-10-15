@@ -1,6 +1,8 @@
 package ml.wonwoo.util;
 
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
 import java.sql.Timestamp;
@@ -130,6 +132,22 @@ public abstract class ClassUtils {
         } catch (Throwable e) {
             return false;
         }
+    }
+
+
+    public static <T extends Annotation> T findMappingAnnotation(Method method, Class<T> annotation) {
+        return method.getAnnotation(annotation);
+    }
+
+    public static <T extends Annotation> T findMappingAnnotation(Field field, Class<T> annotation) {
+        return field.getAnnotation(annotation);
+    }
+
+    public static Field[] findAllFields(Class<?> clazz) {
+        if (clazz.isInterface()) {
+            throw new IllegalArgumentException(clazz + " is an interface");
+        }
+        return clazz.getDeclaredFields();
     }
 
     private ClassUtils() {
