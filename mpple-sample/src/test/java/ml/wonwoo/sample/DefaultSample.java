@@ -30,6 +30,5 @@ public class DefaultSample extends AbstractSample {
         Customer customer = createCustomer();
         CustomerDto customerDto = mapper.customerDto(customer);
         assertThatCustomerDto(customerDto);
-
     }
 }
