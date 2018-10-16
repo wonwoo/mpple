@@ -1,6 +1,7 @@
 package ml.wonwoo.util;
 
 import java.lang.annotation.Annotation;
+import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
@@ -100,26 +101,17 @@ public abstract class ClassUtils {
         return isPresent("org.joda.time.DateTime");
     }
 
-    public static boolean isWrapperType(Class<?> type) {
-        return wrapperType.containsKey(type) || wrapperType.containsValue(type);
-    }
-
-    public static boolean isDefaultJavaType(Class<?> type) {
-        return defaultJavaType.containsKey(type) || defaultJavaType.containsValue(type);
-    }
-
-    public static <T> T instantiateClass(Class<T> clazz, Object... args) {
+    public static <T> T instantiateClass(Class<T> clazz) {
         try {
             Constructor<T> declaredConstructor = clazz.getDeclaredConstructor();
             if (!declaredConstructor.isAccessible()) {
                 declaredConstructor.setAccessible(true);
             }
-            return declaredConstructor.newInstance(args);
+            return declaredConstructor.newInstance();
         } catch (Exception e) {
             throw new IllegalArgumentException(e);
         }
     }
-
 
     public static Type getGenericType(Method method) {
         return method.getGenericParameterTypes()[0];
@@ -135,12 +127,8 @@ public abstract class ClassUtils {
     }
 
 
-    public static <T extends Annotation> T findMappingAnnotation(Method method, Class<T> annotation) {
-        return method.getAnnotation(annotation);
-    }
-
-    public static <T extends Annotation> T findMappingAnnotation(Field field, Class<T> annotation) {
-        return field.getAnnotation(annotation);
+    public static <T extends Annotation> T findMappingAnnotation(AnnotatedElement element, Class<T> annotation) {
+        return element.getAnnotation(annotation);
     }
 
     public static Field[] findAllFields(Class<?> clazz) {
