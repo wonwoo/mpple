@@ -67,7 +67,6 @@ public abstract class ClassUtils {
             javaType.put(CurrencyUnit.class, CurrencyUnit.class);
             javaType.put(MonetaryAmount.class, MonetaryAmount.class);
         }
-
         wrapperType = Collections.unmodifiableMap(wrapper);
         defaultJavaType = Collections.unmodifiableMap(javaType);
 
@@ -87,6 +86,10 @@ public abstract class ClassUtils {
             }
         }
         return true;
+    }
+
+    public static boolean isJavasLang() {
+        return isPresent("io.vavr.collection.Seq");
     }
 
     public static boolean isJava8() {

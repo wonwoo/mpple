@@ -4,6 +4,7 @@ import ml.wonwoo.core.BeanCopyAnnotation;
 import ml.wonwoo.mapped.converter.ArrayConverter;
 import ml.wonwoo.mapped.converter.CollectionConverter;
 import ml.wonwoo.mapped.converter.EnumConverter;
+import ml.wonwoo.mapped.converter.JavasLangConverter;
 import ml.wonwoo.mapped.converter.MapConverter;
 import ml.wonwoo.mapped.converter.MappedConverter;
 import ml.wonwoo.mapped.converter.MappedConverterComposite;
@@ -48,6 +49,10 @@ public class MappingInstanceImpl implements MappingInstance {
             new ArrayConverter(this),
             new EnumConverter()
         );
+
+        if (ClassUtils.isJavasLang()) {
+            this.converter.addConverter(new JavasLangConverter(this));
+        }
     }
 
     public void addConverter(MappedConverter mappedConverter) {
