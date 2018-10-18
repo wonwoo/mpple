@@ -4,6 +4,7 @@ import ml.wonwoo.mapped.Mapped;
 import ml.wonwoo.util.ClassUtils;
 import org.apache.commons.beanutils.BeanUtils;
 
+@Deprecated
 public class BeanUtilsMapped implements Mapped {
 
     @Override
