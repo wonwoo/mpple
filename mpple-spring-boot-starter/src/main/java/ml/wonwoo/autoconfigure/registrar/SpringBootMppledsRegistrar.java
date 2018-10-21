@@ -31,7 +31,7 @@ public class SpringBootMppledsRegistrar extends MppledsRegistrar implements Bean
         BeanDefinitionBuilder definition = BeanDefinitionBuilder.genericBeanDefinition(MppleFactoryBean.class);
         AbstractBeanDefinition beanDefinition = definition.getBeanDefinition();
         definition.addPropertyValue("type", className);
-        definition.addPropertyValue("beanName", "modelMapperMapped");
+        definition.addPropertyValue("beanName", "mapped");
         BeanDefinitionHolder holder = new BeanDefinitionHolder(beanDefinition, className);
         BeanDefinitionReaderUtils.registerBeanDefinition(holder, beanDefinitionRegistry);
     }

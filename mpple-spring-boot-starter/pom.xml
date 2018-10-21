@@ -19,10 +19,27 @@
         <dependency>
             <groupId>ml.wonwoo</groupId>
             <artifactId>mpple-modelmapper</artifactId>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>ml.wonwoo</groupId>
+            <artifactId>mpple-dozer</artifactId>
+            <optional>true</optional>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>

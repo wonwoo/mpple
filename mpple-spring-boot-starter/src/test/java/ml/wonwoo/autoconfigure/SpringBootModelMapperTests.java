@@ -14,15 +14,15 @@ import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit4.SpringRunner;
 
-@SpringBootTest
+@SpringBootTest(properties = "mpple.mapper.type=modelmapper")
 @RunWith(SpringRunner.class)
-public class SpringBootPropertyMapTest {
+public class SpringBootModelMapperTests {
 
     @Autowired
     private FooMapper fooMapper;
 
     @Test
-    public void propertyMappingTest() {
+    public void modelmapperTest() {
         Foo foo = new Foo();
         foo.setFirstName("wonwoo");
         foo.setLastName("lee");

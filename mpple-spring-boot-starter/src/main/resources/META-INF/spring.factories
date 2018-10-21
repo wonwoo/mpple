@@ -1,3 +1,5 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-  ml.wonwoo.autoconfigure.MppleAutoConfiguration,\
+  ml.wonwoo.autoconfigure.ModelMapperAutoConfiguration,\
+  ml.wonwoo.autoconfigure.DozerAutoConfiguration,\
+  ml.wonwoo.autoconfigure.DefaultAutoConfiguration,\
   ml.wonwoo.autoconfigure.MppledsRegistrarAutoConfiguration

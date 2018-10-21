@@ -1,0 +1,10 @@
+{
+  "properties": [
+    {
+      "name": "mpple.mapper.type",
+      "type": "ml.wonwoo.autoconfigure.MapperType",
+      "description": "mapper.type",
+      "defaultValue": "none"
+    }
+  ]
+}
