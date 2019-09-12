@@ -1,12 +1,13 @@
 package ml.wonwoo.handler;
 
+import ml.wonwoo.mapped.Mapped;
+import ml.wonwoo.util.Assert;
+
 import java.lang.invoke.MethodHandles.Lookup;
-import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
-import ml.wonwoo.mapped.Mapped;
-import ml.wonwoo.util.Assert;
 
 //TODO
 public class MapperInvocationHandler implements InvocationHandler {
@@ -53,15 +54,13 @@ public class MapperInvocationHandler implements InvocationHandler {
     }
 
     protected Object defaultMethod(Object proxy, Method method, Object[] args) throws Throwable {
-        final Constructor<Lookup> constructor = Lookup.class.getDeclaredConstructor(Class.class, int.class);
-        if (!constructor.isAccessible()) {
-            constructor.setAccessible(true);
-        }
-        final Class<?> declaringClass = method.getDeclaringClass();
-        return constructor.newInstance(declaringClass, Lookup.PRIVATE)
-            .unreflectSpecial(method, declaringClass)
-            .bindTo(proxy)
-            .invokeWithArguments(args);
+        Class<?> declaringClass = method.getDeclaringClass();
+        Field field = Lookup.class.getDeclaredField("IMPL_LOOKUP");
+        field.setAccessible(true);
+        return ((Lookup) field.get(null))
+                .unreflectSpecial(method, declaringClass)
+                .bindTo(proxy)
+                .invokeWithArguments(args);
     }
 
     private boolean isDefault(Method method) {
