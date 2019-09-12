@@ -39,7 +39,7 @@ public class MapperInvocationHandler implements InvocationHandler {
         if (isDefault(method)) {
             return defaultMethod(proxy, method, args);
         }
-        if (args == null || args.length == 0 || args.length > 1) {
+        if (args == null || args.length != 1) {
             throw new IllegalArgumentException("args must only one!");
         }
         if (isNotSupportType(method)) {
