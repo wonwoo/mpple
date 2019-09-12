@@ -1,6 +1,7 @@
 package ml.wonwoo.core;
 
 import java.beans.PropertyDescriptor;
+import java.lang.reflect.AnnotatedElement;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
 import java.util.HashMap;
@@ -126,11 +127,11 @@ abstract public class BeanCopyAnnotation {
         }
     }
 
-    private static Mapping findMappingAnnotation(Method method) {
+    private static Mapping findMappingAnnotation(AnnotatedElement method) {
         return ClassUtils.findMappingAnnotation(method, Mapping.class);
     }
 
-    private static Mapping findMappingAnnotation(Field field) {
-        return ClassUtils.findMappingAnnotation(field, Mapping.class);
-    }
+//    private static Mapping findMappingAnnotation(Field field) {
+//        return ClassUtils.findMappingAnnotation(field, Mapping.class);
+//    }
 }
