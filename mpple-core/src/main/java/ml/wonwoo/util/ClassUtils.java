@@ -30,6 +30,12 @@ public abstract class ClassUtils {
     private final static Set<Class<?>> typeCaches = new HashSet<>();
     private final static Set<Class<?>> allType = new HashSet<>();
 
+    private final static boolean IS_JAVAS_LANG = isPresent("io.vavr.collection.Seq");
+    private final static boolean IS_JAVA_EIGHT =  isPresent("java.util.Optional");
+    private final static boolean IS_MONEY =  isPresent("javax.money.MonetaryAmount");
+    private final static boolean IS_JODA =  isPresent("org.joda.time.DateTime");
+
+
     static {
         final Map<Class<?>, Class<?>> wrapper = new ConcurrentHashMap<>();
         final Map<Class<?>, Class<?>> javaType = new ConcurrentHashMap<>();
@@ -89,19 +95,19 @@ public abstract class ClassUtils {
     }
 
     public static boolean isJavasLang() {
-        return isPresent("io.vavr.collection.Seq");
+        return IS_JAVAS_LANG;
     }
 
     public static boolean isJava8() {
-        return isPresent("java.util.Optional");
+        return IS_JAVA_EIGHT;
     }
 
     public static boolean isJsr354() {
-        return isPresent("javax.money.MonetaryAmount");
+        return IS_MONEY;
     }
 
     public static boolean isJoda() {
-        return isPresent("org.joda.time.DateTime");
+        return IS_JODA;
     }
 
     public static <T> T instantiateClass(Class<T> clazz) {
