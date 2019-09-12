@@ -24,18 +24,18 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <maven-surefire-plugin.version>2.21.0</maven-surefire-plugin.version>
-        <maven-compiler-plugin.version>3.8.0</maven-compiler-plugin.version>
-        <spring.version>5.0.8.RELEASE</spring.version>
-        <cglib.version>3.2.5</cglib.version>
-        <typetools.version>0.5.0</typetools.version>
-        <spring-boot.version>2.0.4.RELEASE</spring-boot.version>
+        <maven-surefire-plugin.version>2.22.2</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <spring.version>5.1.9.RELEASE</spring.version>
+        <cglib.version>3.3.0</cglib.version>
+        <typetools.version>0.6.1</typetools.version>
+        <spring-boot.version>2.1.8.RELEASE</spring-boot.version>
         <moneta.version>1.3</moneta.version>
-        <modelmapper.version>2.2.0</modelmapper.version>
-        <dozer.version>5.4.0</dozer.version>
-        <commons-beanutils.version>1.9.3</commons-beanutils.version>
+        <modelmapper.version>2.3.5</modelmapper.version>
+        <dozer.version>5.5.1</dozer.version>
+        <commons-beanutils.version>1.9.4</commons-beanutils.version>
         <junit.version>4.12</junit.version>
-        <maven.jacoco.version>0.7.6.201602180812</maven.jacoco.version>
+        <maven.jacoco.version>0.8.4</maven.jacoco.version>
         <coveralls.version>4.3.0</coveralls.version>
         <jacoco.it.execution.data.file>${project.build.directory}/coverage-reports/jacoco-it.exec</jacoco.it.execution.data.file>
         <jacoco.ut.execution.data.file>${project.build.directory}/coverage-reports/jacoco-ut.exec</jacoco.ut.execution.data.file>
