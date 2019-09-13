@@ -43,6 +43,15 @@ public class MappedConverterComposite implements MappedConverter {
         return this;
     }
 
+    public MappedConverterComposite setConverter(MappedConverter mappedConverter) {
+        return this.setConverter(0, mappedConverter);
+    }
+
+    public MappedConverterComposite setConverter(int index, MappedConverter mappedConverter) {
+        mappedConverters.add(index, mappedConverter);
+        return this;
+    }
+
     @Override
     public Object convert(Class<?> clazz, Object value, Class<?> target, Object context) {
         return converter(target).convert(clazz, value, target, context);

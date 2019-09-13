@@ -59,4 +59,9 @@ public class MappingInstanceImpl implements MappingInstance {
         Assert.notNull(mappedConverter, "mappedConverter must not null");
         this.converter.addConverter(mappedConverter);
     }
+
+    public void setConverter(MappedConverter mappedConverter) {
+        Assert.notNull(mappedConverter, "mappedConverter must not null");
+        this.converter.setConverter(mappedConverter);
+    }
 }
