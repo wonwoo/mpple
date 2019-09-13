@@ -23,10 +23,6 @@
 
         <dependency>
             <groupId>ml.wonwoo</groupId>
-            <artifactId>mpple-beanutils</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>ml.wonwoo</groupId>
             <artifactId>mpple-dozer</artifactId>
             <exclusions>
                 <exclusion>

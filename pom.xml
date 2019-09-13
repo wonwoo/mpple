@@ -73,11 +73,6 @@
             </dependency>
             <dependency>
                 <groupId>ml.wonwoo</groupId>
-                <artifactId>mpple-beanutils</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>ml.wonwoo</groupId>
                 <artifactId>mpple-dozer</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -229,8 +224,6 @@
                     <jacocoReports>
                         <jacocoReport>mpple-core/target/site/jacoco-it/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-core/target/site/jacoco-ut/jacoco.xml</jacocoReport>
-                        <jacocoReport>mpple-beanutils/target/site/jacoco-it/jacoco.xml</jacocoReport>
-                        <jacocoReport>mpple-beanutils/target/site/jacoco-ut/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-dozer/target/site/jacoco-it/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-dozer/target/site/jacoco-ut/jacoco.xml</jacocoReport>
                         <jacocoReport>mpple-modelmapper/target/site/jacoco-it/jacoco.xml</jacocoReport>
