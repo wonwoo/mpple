@@ -49,7 +49,7 @@ public class CollectionConverter implements MappedConverter {
     }
 
     @SuppressWarnings("unchecked")
-    protected <T> Collection<T> collectionCreate(Class<T> clazz) {
+    private  <T> Collection<T> collectionCreate(Class<T> clazz) {
         if (clazz.isInterface()) {
             if (Set.class.isAssignableFrom(clazz)) {
                 return new HashSet<>();

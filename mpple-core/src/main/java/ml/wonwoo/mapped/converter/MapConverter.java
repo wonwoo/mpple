@@ -52,7 +52,7 @@ public class MapConverter implements MappedConverter {
     }
 
     @SuppressWarnings("unchecked")
-    protected Map<Object, Object> mapCreate(Class<?> clazz) {
+    private Map<Object, Object> mapCreate(Class<?> clazz) {
         if (clazz.isInterface()) {
             return new HashMap<>();
         }
