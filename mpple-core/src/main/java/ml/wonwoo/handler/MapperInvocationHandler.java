@@ -53,7 +53,7 @@ public class MapperInvocationHandler implements InvocationHandler {
         return method.getReturnType() == Object.class || method.getReturnType() == void.class;
     }
 
-    protected Object defaultMethod(Object proxy, Method method, Object[] args) throws Throwable {
+    private Object defaultMethod(Object proxy, Method method, Object[] args) throws Throwable {
         Class<?> declaringClass = method.getDeclaringClass();
         Field field = Lookup.class.getDeclaredField("IMPL_LOOKUP");
         field.setAccessible(true);
